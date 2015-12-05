@@ -1,5 +1,5 @@
 COMPILER=gcc
-FLAGS= -g  -D_POSIX_C_SOURCE -Wall -std=c99 -pthread
+FLAGS= -g  -D_POSIX_C_SOURCE -Wall -std=c99 -pthread -D_GNU_SOURCE
 PROGRAM=server
 INCLUDES_FOLDER=include
 LIBRARY_FOLDER=lib
