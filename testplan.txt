@@ -1,0 +1,205 @@
+Roshan Patel
+Systems Programming - PA5: MUTLITHREADED BANK SYSTEM
+	testplan.txt
+
+
+My plan for testing will include a selection of testcases that attempt 
+to test the functionality of the server and client programs with smaller
+systematic checks.  I will first test proper connection of data structures 
+between the server and client programs.  Then I will move onto testing that
+data structures are properly shared between the server and client.  Lastly, 
+I will dedicate a few test cases to testing the banking functions of the 
+server.
+
+Below is a table of contents of each of my test cases and its goal.
+For information on how these testcases can be implemented, see the 
+respective commands that coorespond to each testcase.
+For expected outputs of each testcase, please view the bank-testcases.txt
+file.
+
+TESTCASE01 : testing connections
+TESTCASE02 : connecting multiple clients
+TESTCASE03 : functionality of account structures
+TESTCASE04 : testing basic commands on one client
+TESTCASE05 : serving multiple clients simultaneously
+TESTCASE06 : filling up server to limit
+TESTCASE07 : attempting to open duplicate accounts
+TESTCASE08 : starting client process before server
+TESTCASE09 : functionality of credit and debit
+TESTCASE10 : attempting to start on an active session
+TESTCASE11 : client exits with server exit
+
+
+___________________________________________________________________________
+TESTCASE01 : testing connections
+	./server
+
+
+	./cient localhost 
+
+___________________________________________________________________________
+TESTCASE02 : connecting multiple clients
+	
+	./server
+
+
+	./client localhost
+
+
+	./client localhost
+
+
+___________________________________________________________________________
+TESTCASE03 : functionality of account structures
+
+	./server
+
+
+	./client localhost
+	open roshan
+	open charles
+	open goku
+	open voldemort
+	credit 10
+	debit 5
+	balance
+	finish
+	start roshan
+	balance
+	finish 
+	exit
+
+
+___________________________________________________________________________
+TESTCASE04 : testing basic commands on one client
+
+	./server
+
+
+	./client localhost
+	open bruce
+	start bruce
+	credit 10
+	debit 5
+	balance
+	finish
+	exit
+
+___________________________________________________________________________
+TESTCASE05 : serving multiple clients simultaneously
+
+	./server
+
+
+	./client localhost
+	open obiwan
+	start obiwan
+	credit 50
+	debit 3
+	finish
+	exit
+
+
+	./client localhost
+	open darthmaul
+	start darthmaul
+	credit 1000
+	debit 4
+	finish
+	exit
+
+
+___________________________________________________________________________
+TESTCASE06 : filling up server to limit
+
+
+	./server
+
+
+	./client localhost
+	open 1
+	open 2
+	open 3
+	..
+	open 18
+	open 19
+	open 20
+	open 21
+	quit
+
+___________________________________________________________________________
+TESTCASE07 : attempting to open duplicate accounts
+
+	./server
+
+
+	./client localhost
+	open sally
+	open sally
+	quit
+
+
+___________________________________________________________________________
+TESTCASE08 : starting client process before server
+
+
+	./client localhost
+
+	./server
+
+
+___________________________________________________________________________
+TESTCASE09 : functionality of credit and debit
+
+	./server
+
+
+	./client localhost
+	open 2pac
+	start 2pac
+	credit 1000
+	debit 100000
+	debit 10
+	balance
+	finish
+	exit
+
+___________________________________________________________________________
+TESTCASE10 : attempting to start on an active session
+
+	./server
+
+
+	./client localhost
+	open steve
+	open jobs
+	<goto client_02>
+	start jobs
+	credit 10
+	finish
+	quit
+
+
+	./client localhost
+	start jobs
+	finish
+	exit
+
+
+___________________________________________________________________________
+TESTCASE11 : client exits with server exit
+
+	./server
+	^C
+
+	./client localhost
+	
+
+	
+
+
+
+
+
+
+
