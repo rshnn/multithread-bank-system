@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
-#include <pthread.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/time.h>
@@ -14,6 +13,9 @@
 #include "linkedlist.h"
 #include "hashmap.h"
 #include "port.h"
+#include <pthread.h>
+
+
 
 /* Account structure */
 struct account {
