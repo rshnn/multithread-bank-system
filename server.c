@@ -15,6 +15,8 @@
 #include "port.h"
 #include <pthread.h>
 
+#define _POSIX_C_SOURCE 200112L
+
 
 
 /* Account structure */
