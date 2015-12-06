@@ -50,3 +50,10 @@ The second thread is a response-output thread. It will read messages from the se
 The client will announce its completion of connecting to the sever with a series of print statements indicating when the threads have all been initialized. The sever program announces its acceptance of a connection from a client with the print statement "New client connection." When clients disconnect from the server, messages are printed in the server program stating: “Ended session and unlocked account mutex.” The server will display print messages upon receiving any command from any connected client.
 
 Lastly, the client will display messages sent  from the sever upon successful or failed commands.
+
+
+# Testcase Analysis
+
+Test cases attempt to tackle specific functions of the banking system systematically. First, I tested the proper connection between server and client processes. Then, I tested the proper sharing of data between the two processes. Lastly, I tested the proper implementation of banking functions. More information regarding my test cases and expected outputs can be found in the attached text files: `bank-testcases.txt` and `testplan.txt`. 
+
+## Testcase 1: Testing Connections
