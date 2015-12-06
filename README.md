@@ -52,11 +52,14 @@ The client will announce its completion of connecting to the sever with a series
 Lastly, the client will display messages sent  from the sever upon successful or failed commands.
 
 
-# Testcase Analysis
+# Test Case Analysis
 
 Test cases attempt to tackle specific functions of the banking system systematically. First, I tested the proper connection between server and client processes. Then, I tested the proper sharing of data between the two processes. Lastly, I tested the proper implementation of banking functions. More information regarding my test cases and expected outputs can be found in the attached text files: `bank-testcases.txt` and `testplan.txt`. 
 
-## Testcase 1: Testing Connections
+
+## Test Case 1: Testing Connections
+
+The simplest test case exhibits the messages that are printed when the client and server processes properly connect and are able to communicate.
 
 __Server__
 
@@ -77,7 +80,9 @@ __Client_1__
     Server Message: Please enter a command:
 
 
-## Testcase 2: Connecting Multiple Clients
+## Test Case 2: Connecting Multiple Clients
+
+This testcase shows two separate instances of client processes connecting to the same server. The server announces its connection to each with a print statement.
 
 __Server__
 
@@ -108,7 +113,9 @@ __Client_02__
     Server Message: Please enter a command:
 
 
-## Testcase 3: Functionality of Account Structures
+## Test Case 3: Functionality of Account Structures
+
+This test case exercises the proper maintainence of the account data structures within the server program. Multiple accounts are opened and balance changing commands are attempted. Note that the client program received error messages stating that the client is not currently accessing an account. Then an account is accessed with start and the balance is  viewed before safely finishing and terminating the client program.
 
 __Server__
 
@@ -216,7 +223,9 @@ __Client_01__
 
 
 
-## Testcase 4: Testing Basic Commands on One Client
+## Test Case 4: Testing Basic Commands on One Client
+
+This test case will exercise all the capabilities of one client process. It will open an account, start that account, credit money, debit a valid amount, view its balance, and then safely finish accessing. The client program then terminates with exit. Notifications can be seen in the server program when commands are received. The bank information is also validly updated.
 
 __Server__
 
@@ -279,7 +288,9 @@ __Client_01__
         `````````````````````````````````````````````````````````
 
 
-## Testcase 5: Serving Multiple Clients Simultaneously
+## Test Case 5: Serving Multiple Clients Simultaneously
+
+This test case does the same as the previous except with two clients accessing two separate accounts simultaneously. The first client process will open, start, credit, and debit an account. The second process does the same concurrently (from a different terminal tab on the same machine). The server accurately displays messages regarding the commands received from each client process.
 
 __Server__
 
@@ -374,7 +385,9 @@ __Client_02__
         exit
 
 
-## Testcase 6: Filling up Server to Limit
+## Test Case 6: Filling up Server to Limit
+
+This is a simple test case to ensure that greater than 20 accounts cannot be created for the server. A single client process attempts to create 21 accounts. An error message is prompted from the sever on the 21st command. 
 
 __Server__
 
@@ -406,7 +419,10 @@ __Client_01__
         Server Message: Cannot create more than twenty accounts.
 
 
-## Testcase 7: Attempting to Open Duplicate Accounts
+## Test Case 7: Attempting to Open Duplicate Accounts
+
+
+Another simple test case to check that multiple account names cannot be registered in the banking server. An error message is prompted by the server program upon receiving the command to create a duplicate account.
 
 __Server__
 
@@ -432,7 +448,9 @@ __Client_01__
 
 
 
-## Testcase 8: Starting Client Process Before Serve
+## Test Case 8: Starting Client Process Before Serve
+
+This test case will start the client process before the server process. When started, the client process is unable to connect with the server on the given port. As designed, it will wait 3 seconds and try again. By this time, the server process is started and the connection is established.
 
 __Server__
 
@@ -451,8 +469,9 @@ __Client_01__
         Server Message: Please enter a command:
 
 
+## Test Case 9: Functionality of Credit and Debit
 
-## Testcase 9: Functionality of Credit and Debit
+This test case exercises the proper functions of the credit and debit commands. A client can always credit to an account. A client can only debit from an account if sufficient funds are available.
 
 __Server__
 
@@ -505,7 +524,9 @@ __Client_01__
         exit
 
 
-## Testcase 10: Attempting to Start on n Active Session
+## Test Case 10: Attempting to Start on n Active Session
+
+This test case exercises the mutex locking between different accounts. One client opens and starts an account. The other client (client_01) attempts to start this account, but is prompted with an error message from the server. It will begin to wait for the account to be finished by the other client process. Once client_02 finishes with the account, client_01 is able to successfully connect. Throughout this process, the server program reports messages accordingly.
 
 __Server__
 
@@ -595,7 +616,7 @@ __Client_02__
         exit
 
 
-## Testcase 11: Client Exits with Serve Exit
+## Test Case 11: Client Exits with Serve Exit
 
 __Server__
 
